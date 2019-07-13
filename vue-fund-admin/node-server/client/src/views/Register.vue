@@ -3,6 +3,29 @@
     <section class="form_container">
       <div class="manage_tip">
         <span class="title">米修在线后台管理系统</span>
+        <el-form :model="registerUser" status-icon :rules="rules" ref="form" label-width="100px" class="registerForm">
+          <el-form-item label="用户名" prop="name" required>
+            <el-input v-model="registerUser.name" placeholder="请输入用户名"></el-input>
+          </el-form-item>
+          <el-form-item label="邮箱" prop="email" required>
+            <el-input v-model="registerUser.email" placeholder="请输入邮箱"></el-input>
+          </el-form-item>
+          <el-form-item label="密码" prop="password" required>
+            <el-input type="password" v-model="registerUser.password" placeholder="请输入密码"></el-input>
+          </el-form-item>
+          <el-form-item label="确认密码" prop="password2" required>
+            <el-input type="password" v-model="registerUser.password2" placeholder="请确定密码"></el-input>
+          </el-form-item>
+          <el-form-item label="身份" prop="identity" required>
+            <el-select v-model="registerUser.identity" placeholder="请选择身份">
+              <el-option v-for="(item, index) in identityOptions" :key="index" :label="item.label" :value="item.value"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="register('form')">注册</el-button>
+            <el-button @click="reset('form')">重置</el-button>
+          </el-form-item>
+        </el-form>
       </div>
     </section>
   </div>
@@ -10,7 +33,61 @@
 
 <script>
 export default {
-  name: 'register'
+  name: 'register',
+  data() {
+    const validatePass2 = (rule, value, callback) => {
+      if (value !== this.registerUser.password) {
+        callback(new Error('两次输入密码不一致!'));
+      } else {
+        callback();
+      }
+    };
+    return {
+      registerUser: {
+        name: '',
+        email: '',
+        password: '',
+        password2: '',
+        identity: ''
+      },
+      rules: {
+        name: [
+          { required: true, message: '用户名不能为空', trigger: 'blur' },
+          { min: 2, max: 10, message: '长度在2~10个字符之间', trigger: 'blur'}
+        ],
+        email: [{ type: 'email', message: '邮箱格式不正确', trigger: 'blur' }],
+        password: [
+          { required: true, message: '密码不能为空', trigger: 'blur' },
+          { min: 6, max: 30, message: '长度在6~30字符之间', trigger: 'blur' }
+        ],
+        password2: [
+          { required: true, message: '确认密码不能为空', trigger: 'blur' },
+          { min: 6, max: 30, message: '长度在6~30字符之间', trigger: 'blur' },
+          { validator: validatePass2, trigger: 'blur' }
+        ],
+        identity: [{ required: true, message: '请选择身份', trigger: 'change' }]
+      },
+      identityOptions: [
+        { label: '管理员', value: 'manager' },
+        { label: '员工', value: 'employee' },
+      ]
+    }
+  },
+  methods: {
+    register(formName) {
+      console.log(formName);
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          console.loag(valid);
+        } else {
+          return false;
+        }
+      })
+    },
+    reset(formName) {
+      this.$refs[formName].resetFields();
+    }
+  }
 }
 </script>
 

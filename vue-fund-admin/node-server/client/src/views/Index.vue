@@ -1,15 +1,16 @@
 <template>
   <div class="index">
-    初始化
+    <head-nav></head-nav>
   </div>
 </template>
 
 <script>
+import HeadNav from '../components/HeadNav'
 
 export default {
   name: 'index',
   components: {
-    
+    HeadNav
   }
 }
 </script>

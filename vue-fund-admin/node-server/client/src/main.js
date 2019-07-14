@@ -7,6 +7,8 @@ import axios from './http'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import '../public/iconfont/iconfont.css'
+
 Vue.use(ElementUI)
 
 Vue.prototype.$axios = axios;

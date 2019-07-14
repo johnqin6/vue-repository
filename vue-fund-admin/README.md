@@ -277,11 +277,11 @@
 
 ## 页面效果  
 
-[注册页面]('./images/register.png')    
+![注册页面](./images/register.png)    
 
-[登录页面]('./images/login.png')
+![登录页面](./images/login.png)
 
-[主页]('./images/index.png')
+![主页](./images/index.png)
 
 
 

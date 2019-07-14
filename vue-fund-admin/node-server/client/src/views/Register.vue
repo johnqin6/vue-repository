@@ -75,10 +75,18 @@ export default {
   },
   methods: {
     register(formName) {
-      console.log(formName);
       this.$refs[formName].validate(valid => {
         if (valid) {
-          console.loag(valid);
+          this.$axios.post("/api/users/register", this.registerUser)
+          .then(res => {
+            // 注册成功
+            this.$message({
+              type: 'success',
+              message: '账户注册成功！'
+            })
+          })
+
+          this.$router.push({ name: 'login'})
         } else {
           return false;
         }

@@ -3,14 +3,51 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
+const types = {
+  SET_AUTHENTICATED:'SET_AUTHENTICATED',
+  SET_USER:'SET_USER'
+}
 
+const state = {
+  isAuthebticated: false,
+  user: {}
+}
+
+const getters = {
+  isAuthebticated: state => state.isAuthebticated,
+  user: state => state.user
+}
+
+const mutations = {
+  // 设置是否授权
+  [types.SET_AUTHENTICATED](state, isAuthebticated) {
+    if (isAuthebticated) {
+      state.isAuthebticated = isAuthebticated
+    } else {
+      state.isAuthebticated = false
+    }
   },
-  mutations: {
-
-  },
-  actions: {
-
+  [types.SET_USER](state, user) {
+    if (user) {
+      state.user = user
+    } else {
+      state.user = {}
+    }
   }
+}
+
+const actions = {
+  setAuthenticated: ({ commit }, isAuthebticated) => {
+    commit(types.SET_AUTHENTICATED, isAuthebticated)
+  },
+  setUser: ({ commit }, user) => {
+    commit(types.SET_USER, user)
+  }
+}
+
+export default new Vuex.Store({
+  state,
+  getters,
+  mutations,
+  actions
 })

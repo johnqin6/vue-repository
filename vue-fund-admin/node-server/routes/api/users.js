@@ -83,7 +83,7 @@ router.post('/login', (req, res) => {
                   };
                   // 设置token
                   // jst.sign("规则", "加密名称", "过期时间", "箭头函数");
-                  jst.sign(rule, keys.secretOrkey,{ expiresIn: 30}, (err, token) => {
+                  jst.sign(rule, keys.secretOrkey,{ expiresIn: 3600}, (err, token) => {
                     if (err) throw err
                     res.send({
                       message: 'success',

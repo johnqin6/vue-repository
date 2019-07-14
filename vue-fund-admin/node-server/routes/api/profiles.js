@@ -53,7 +53,7 @@ router.post('/edit/:id', passport.authenticate('jwt', { session: false }), (req,
   },{
     new: true
   })
-  .then(doc => res.send({ code: 1, data: doc}))
+  .then(doc => res.send({ code: 1, message: '更新成功!'}))
 })
 
 
@@ -63,7 +63,7 @@ router.post('/edit/:id', passport.authenticate('jwt', { session: false }), (req,
  * @access private(私密的，只有令牌才能访问)
  */
 router.get("/", passport.authenticate('jwt', { session: false }), (req, res) => {
-  Profile.find()
+  Profile.find().sort({ createOn: -1})
   .then(docs => {
     if (!docs) {
       return res.status(404).send({ code: 0, message: '没有任何信息'})

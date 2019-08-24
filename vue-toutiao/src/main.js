@@ -7,6 +7,13 @@ import store from './store';
 import './styles/index.css';
 import './styles/index.less';
 
+/* 工具类 */
+import './utils/iconfont';
+import './utils/rem';
+import { Cookie } from './utils/storage';
+
+Vue.prototype.$cookie = Cookie;
+
 Vue.config.productionTip = false;
 
 new Vue({

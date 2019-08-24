@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="demo">
     <div>
       <span>加载图标</span>
       <CircleLoading></CircleLoading>
@@ -9,12 +9,16 @@
       <span>Icon:</span>
       <Icon name="school"></Icon>
     </div>
+    <div>
+      <span>Githob: </span>
+      <Githob></Githob>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'demo',
   data() {
     return {};
   },

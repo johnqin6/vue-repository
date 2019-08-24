@@ -4,7 +4,7 @@ import qs from 'qs';
 axios.defaults.withCredentials = true;
 
 // 发送时
-axios.inerceptors.request.use(config => {
+axios.interceptors.request.use(config => {
   // 开始
   return config;
 }, err => {
@@ -12,7 +12,7 @@ axios.inerceptors.request.use(config => {
 });
 
 // 响应时
-axios.inerceptors.response.use(response => response, err => Promise.resolve(err.response))
+axios.interceptors.response.use(response => response, err => Promise.resolve(err.response))
 
 // 检查状态码
 function checkStatus(res) {

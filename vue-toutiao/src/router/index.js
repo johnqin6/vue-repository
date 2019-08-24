@@ -15,8 +15,14 @@ export const constantRouterMap = [
   {
     path: '/demo',
     name: 'demo',
-    component: imports('Demo'),
+    components: imports('Demo'),
   },
+  {
+    path: '/',
+    name: '首页',
+    meta: { page: true },
+    components: imports('Layout/index')
+  }
 ];
 
 export const asyncRouterMap = [];

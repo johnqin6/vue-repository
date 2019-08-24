@@ -26,6 +26,17 @@ Vue.use(VueAwesomeSwiper);
 import customComponents from './custom-components';
 Vue.use(customComponents);
 
+// 返回
+Vue.prototype.back = route => {
+  route.animate = 2;
+  history.go(-1);
+};
+
+// 跳转文章页
+Vue.prototype.skip = (route, id) => {
+  route.push('/article/' + id);
+};
+
 Vue.config.productionTip = false;
 
 new Vue({

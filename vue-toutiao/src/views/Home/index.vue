@@ -1,6 +1,6 @@
 <template>
   <article class="home-wrapper">
-
+    hello home
   </article>
 </template>
 

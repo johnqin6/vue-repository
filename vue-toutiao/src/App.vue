@@ -7,7 +7,15 @@
     </transition>
   </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      animate: ''
+    }
+  }
+}
+</script>
 <style lang="less" scoped>
 #app {
   width: 100%;

@@ -1,0 +1,168 @@
+/* 禁止选中文本 */
+.usn {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select: none;
+}
+
+/* 浮动 */
+.f_left { float: left; }
+.f_right { float: right; }
+.f_clear { zoom: 1 }
+.f_clear {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+
+/* 元素类型 */
+.d_block { display: block; }
+.d_none { display: none; }
+.d_inline { display: inline; }
+.d_iblock { display: inline-block; }
+
+/* 文字排版、颜色 */
+.font_12 { font-size: 12px; }
+.font_14 { font-size: 14px; }
+.font_16 { font-size: 16px; }
+.font_18 { font-size: 18px; }
+.font_20 { font-size: 20px; }
+.font_bold { font-weight: bold; }
+.font_normal { font-weight: normal; }
+.t-indent_2 { text-indent: 2em; }
+.red, a.red { color: #cc0031; }
+.darkblue,a.darkblue { color:#039; }
+.gray,a.gray { color:#878787; }
+.lh150 { line-height:150%; }
+.lh180 { line-height:180%; }
+.lh200 { line-height:200%; }
+.underline { text-decoration: underline; }
+.no_underline { text-decoration: none; }
+.a_left { text-align: left; }
+.a_center { text-align: center; }
+.a_right { text-align: right; }
+.a_justify { text-align: justify; text-justify: inter-ideograph; }
+.no_wrap { /* 强制不换行*/
+  word-wrap: normal;
+  white-space: nowrap;
+}
+.wrap { /* 强制换行 */
+  white-space:normal;
+  word-wrap:break-word;
+  word-break:break-all;
+}
+.wp { /* 保持空白序列*/
+  overflow:hidden;
+  text-align:left;
+  white-space:pre-wrap;
+  word-wrap:break-word;
+  word-break:break-all;
+}
+.overflow-ellipsis { /* 多出部分用省略号表示 , 用于一行 */
+  overflow:hidden;
+  word-wrap:normal;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.overflow-ellipsis_2 { /* 适用于webkit内核和移动端 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.overflow-ellipsis_3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.overflow-ellipsis_4 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+/* 溢出样式 */
+.over_hidden { overflow: hidden; }
+.over_scroll { overflow: scroll; }
+.over_auto { overflow: auto; }
+.over_visible { overflow: visible; }
+
+/* 定位方式 */
+.p_static { position: static; }
+.p_relative { position: relative; zoom: 1; }
+.p_absolute { position: absolute; }
+.p_fixed { position: fixed; }
+
+/* 垂直对齐方式 */
+.va_top { vertical-align: top; }
+.va_middle { vertical-align: middle; }
+.va_bottom { vertical-align: bottom; }
+
+/* 鼠标样式 */
+.c_default { cursor: default; }
+.c_pointer { cursor: pointer; }
+.c_help { cursor: help; }
+.c_move { cursor: move; }
+
+/* flex布局 */
+.df-sb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.df-sa {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* 垂直居中 */
+.df-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tb-center {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+.ps-center {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+}
+.ps-mcenter {
+  position: absolute;
+  left: 0;right: 0;
+  bottom: 0; top: 0;
+  margin: auto;
+}
+
+
+/* 辅助 */
+.mask-fixed-wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left:0;top:0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 999;
+}
+.bg-cover {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.bg-cover-all {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

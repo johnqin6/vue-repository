@@ -12,6 +12,9 @@ import './utils/iconfont';
 import './utils/rem';
 import { Cookie } from './utils/storage';
 
+// 自定义全局指令
+import './directive';
+
 Vue.prototype.$cookie = Cookie;
 
 Vue.config.productionTip = false;

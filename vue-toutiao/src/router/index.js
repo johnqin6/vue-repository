@@ -3,8 +3,11 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 
-// Router.prototype.animate = 0;
-const imports = file => import(`../views/${file}.vue`);
+Router.prototype.animate = 0;
+// const imports = file => import(`../views/${file}.vue`);
+import Layout from '../views/Layout/index.vue';
+import Demo from '../views/Demo.vue';
+import Account from '../views/Account';
 
 /**
  * slide: 页面切换动画
@@ -13,15 +16,22 @@ const imports = file => import(`../views/${file}.vue`);
 
 export const constantRouterMap = [
   {
-    path: '/demo',
-    name: 'demo',
-    components: imports('Demo'),
-  },
-  {
     path: '/',
     name: '首页',
     meta: { page: true },
-    components: imports('Layout/index')
+    component: Layout,
+    // components: imports('Layout/index')
+  },
+  {
+    path: '/account',
+    meta: { page: true },
+    component: Account,
+    name: '个人中心'
+  },
+  {
+    path: '/demo',
+    name: 'demo',
+    component: Demo,
   }
 ];
 

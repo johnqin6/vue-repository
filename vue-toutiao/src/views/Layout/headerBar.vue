@@ -23,7 +23,7 @@ export default {
 <style lang="less" scoped>
 .header-wrapper {
   height: 0.5rem;
-  // background: @theme-bg-red;
+  background: @theme-bg-red;
   .logo {
     width: 1.3rem;
     height: 100%;
@@ -34,7 +34,7 @@ export default {
   .search {
     width: e("calc(100% - 1.3rem)");
     position: relative;
-    // color: @font-gray;
+    color: @font-gray;
     .search-icon {
       position: absolute;
       left: 0.06rem; top: 50%;
@@ -45,7 +45,7 @@ export default {
       height: 0.3rem;
       border: none;
       outline: none;
-      // background: @bg-color;
+      background: @bg-color;
       text-indent: 0.3rem;
       border-radius: 0.04rem;
     }

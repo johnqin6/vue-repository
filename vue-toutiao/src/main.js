@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
-import router from './router/permission';
+import router from './router/permission.js';
 import store from './store/index';
 
 /* 样式 */

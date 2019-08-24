@@ -15,6 +15,7 @@ router.beforeEach((to, from, next) => {
   } else {
     if (to.meta.page) store.state.app.pageLoading = true;
     next();
+    console.log(to);
   }
 });
 

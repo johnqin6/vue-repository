@@ -4,10 +4,11 @@
       <router-link
         tag="li"
         :to="item.path"
-        :class="{'active': ($router.matched[0].path || $router.matched[1].path) === item.path}"
+        
         v-for="(item, index) in footerBarList"
         :key="index"
       >
+      <!-- :class="{'active': ($router.matched[0].path || $router.matched[1].path) === item.path}" -->
         <Icon :name="item.icon"></Icon>
         <div>{{ item.title }}</div>
       </router-link>
@@ -17,7 +18,19 @@
 
 <script>
 import { Local } from "@/utils/storage";
-export default {};
+import { mapGetters } from "vuex";
+
+export default {
+  computed: {
+    ...mapGetters([
+      'footerBarList',
+      'user'
+    ])
+  },
+  mounted() {
+    console.log(this.footerBarList)
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -37,7 +50,7 @@ export default {};
     width: 25%;
     float: left;
     text-align: center;
-    // color: @theme-black;
+    color: @theme-black;
     svg {
       width: 0.22rem;
       height: 0.22rem;
@@ -49,7 +62,7 @@ export default {};
     }
   }
   .active {
-    // color: @theme-red;
+    color: @theme-red;
   }
 }
 </style>

@@ -12,7 +12,7 @@
     display: inline-block;
     vertical-align: middle;
     font-size: 0.14rem;
-    // color: @font-gray;
+    color: @font-gray;
   }
 }
 </style>

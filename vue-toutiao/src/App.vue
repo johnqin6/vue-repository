@@ -1,31 +1,52 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <transition :name="animate">
+      <keep-alive>
+        <router-view id="view"></router-view>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
-<style>
+<style lang="less" scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
+  width: 100%;
+  height: 100%;
+  .login-active {
+    opacity: 1;
+    top: 0;
+  }
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(100%, 0);
+}
+
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate(-100%, 0);
+}
+
+.slide-top-enter,
+.slide-bottom-leave-active {
+  opacity: 0;
+  transform: translate(0, 100%);
+}
+
+.slide-top-leave-active,
+.slide-bottom-enter {
+  opacity: 0;
+  transform: translate(0, -100%);
 }
 </style>

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
-import router from './router';
-import store from './store';
+import router from './router/permission';
+import store from './store/index';
 
 /* 样式 */
 import './styles/index.css';
@@ -16,6 +16,15 @@ import { Cookie } from './utils/storage';
 import './directive';
 
 Vue.prototype.$cookie = Cookie;
+
+// swiper
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+import 'swiper/dist/css/swiper.css';
+Vue.use(VueAwesomeSwiper);
+
+// 全局组件
+import customComponents from './custom-components';
+Vue.use(customComponents);
 
 Vue.config.productionTip = false;
 

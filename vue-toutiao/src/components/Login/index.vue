@@ -7,7 +7,7 @@
       <span :class="{'animate': username_msg}">{{ username_msg }}</span>
     </div>
     <div class="input password">
-      <input type="password" placeholder="密码：123456" v-modle="password" />
+      <input type="password" placeholder="密码：123456" v-model="password" />
       <span :class="{'animate': password_msg}">{{ password_msg }}</span>
     </div>
     <button class="login" @click="login">进入头条</button>
@@ -41,7 +41,6 @@ export default {
         this.password_msg = "";
       }
       if (this.password_msg) return;
-
       this.$showLoading();
       try {
         await this.$store.dispatch('login', {

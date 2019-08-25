@@ -31,7 +31,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import { newsList as allNewsList } from "src/store/modules/classify";
+import { newsList as allNewsList } from "@/store/modules/classify";
 export default {
   data() {
     return {

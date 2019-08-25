@@ -5,12 +5,13 @@
         <router-view id="view"></router-view>
       </keep-alive>
     </transition>
-    <!-- <FullCircleLoading v-show="pageLoading"></FullCircleLoading> -->
+    <Login :class="{'login-active': isLogin}" @close="$store.state.user.isLogin = false"></Login>
+    <FullCircleLoading v-show="pageLoading"></FullCircleLoading>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import Login from '@/components/Login/index';
+import Login from '@/components/Login';
 
 export default {
   data() {
@@ -73,7 +74,8 @@ export default {
   transform: translate(100%, 0);
 }
 
-.slide-left-leave-active {
+.slide-left-leave-active,
+.slide-right-enter {
   opacity: 0;
   transform: translate(-100%, 0);
 }

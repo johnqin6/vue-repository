@@ -1,31 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <q-header title="山海相隔 一眼入梦"></q-header>
+    <tab-list :tabList="tabList" :tabIndex="tabIndex" @change="chooseTab"></tab-list>
     <router-view/>
   </div>
 </template>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  data () {
+    return {
+      tabIndex: 0,
+      tabList: [
+        { name: '推荐' },
+        { name: '歌手' },
+        { name: '排行' },
+        { name: '搜索' }
+      ]
+    }
+  },
+  methods: {
+    chooseTab (index) {
+      this.tabIndex = index
+    }
+  }
 }
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>

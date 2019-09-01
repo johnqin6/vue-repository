@@ -18,7 +18,8 @@ export function getRecommend () {
 }
 
 export function getDiscList () {
-  const url = '/api/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg'
+  // const url = '/api/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg'
+  const url = '/api/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
 
   const params = Object.assign({}, commonParams, {
     platform: 'yqq',

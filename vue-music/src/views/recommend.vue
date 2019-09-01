@@ -1,13 +1,35 @@
 <template>
   <div class="recommend">
-    <swiper class="swiper-container" :options="swiperOption">
-      <swiper-slide v-for="item in recommends" :key="item.id">
-        <img :src="item.picUrl" alt="">
-      </swiper-slide>
-      <div class="swiper-pagination" slot="pagination"></div>
-      <div class="swiper-button-prev" slot="button-prev"></div>
-      <div class="swiper-button-next" slot="button-next"></div>
-    </swiper>
+    <q-scroll>
+      <swiper class="swiper-container" :options="swiperOption">
+        <swiper-slide v-for="item in recommends" :key="item.id">
+          <img :src="item.picUrl" alt="">
+        </swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
+        <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>
+      </swiper>
+      <div class="recommend-list">
+        <h2 class="list-title">热门歌单推荐</h2>
+        <ul>
+          <li class="item"
+            @click="selectItem(item)"
+            v-for="(item, index) in discList" :key="index">
+            <div class="icon">
+              <img v-lazy="item.imgurl" width="60" height="60">
+            </div>
+            <div class="text">
+              <h2 class="name" v-html="item.dissname"></h2>
+              <p class="desc" v-html="item.creator.name"></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="loading-container" >
+        <loading></loading>
+      </div>
+    </q-scroll>
+    <router-view></router-view>
   </div>
 </template>
 <script>
@@ -21,6 +43,7 @@ export default {
   data () {
     return {
       recommends: [],
+      discList: [],
       swiperOption: {
         // 循环
         loop: true,
@@ -51,6 +74,12 @@ export default {
     this.getDiscData()
   },
   methods: {
+    selectItem (item) {
+      this.$router.push({
+        path: `/disc/${item.dissid}`
+      })
+      this.setDisc(item)
+    },
     async getRecommendList () {
       const res = await getRecommend()
       if (res.code === 0) {
@@ -59,7 +88,9 @@ export default {
     },
     async getDiscData () {
       const res = await getDiscList()
-      console.log(res)
+      if (res.code === 0) {
+        this.discList = res.data.list
+      }
     },
     ...mapMutations({
       setDisc: 'SET_DISC'
@@ -72,6 +103,40 @@ export default {
   .swiper-container {
     img {
       width: 100%;
+    }
+  }
+  .recommend-list {
+    .list-title {
+      height: 65px;
+      line-height: 65px;
+      text-align: center;
+      font-size: @font-size-medium;
+      color: @color-theme;
+    }
+    .item {
+      display: flex;
+      box-sizing: border-box;
+      align-items: center;
+      padding: 0 20px 20px 20px;
+      .icon {
+        flex: 0 0 60px;
+        padding-right: 20px;
+      }
+      .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        line-height: 20px;
+        overflow: hidden;
+        font-size: @font-size-medium;
+        .name {
+          margin-bottom: 10px;
+          color: @color-text;
+        }
+        .desc {
+          color: @color-text-d;
+        }
+      }
     }
   }
 }

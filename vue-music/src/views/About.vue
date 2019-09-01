@@ -7,14 +7,19 @@
       <p>hello world</p>
     </top-tip>
     <switches :switches="switchesData" @switch="chooseItem"></switches>
-    <slider>
+    <!-- <slider>
       <slider-item>
         <div class="demo-img"></div>
       </slider-item>
       <slider-item>
         <div class="demo-img blue"></div>
       </slider-item>
-    </slider>
+    </slider> -->
+    <search-box placeholder="搜索"></search-box>
+    <search-list :searches="searches" @delete="deleteSearchItem"></search-list>
+    <progress-bar></progress-bar>
+    <progress-circle></progress-circle>
+    <q-confirm text="这是提交文本" ref="confirm"></q-confirm>
   </div>
 </template>
 <script>
@@ -25,15 +30,21 @@ export default {
         { name: '标题' },
         { name: '标题1' },
         { name: '标题2' }
-      ]
+      ],
+      searches: ['搜索', '始数']
     }
   },
   mounted () {
     this.$refs.tip.show()
+    this.$refs.confirm.show()
   },
   methods: {
     chooseItem (val) {
       console.log(val)
+    },
+    deleteSearchItem (val) {
+      console.log(val)
+      this.searches = this.searches.filter(item => item !== val)
     }
   }
 }

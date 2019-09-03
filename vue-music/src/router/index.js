@@ -18,6 +18,11 @@ export default new Router({
       component: Recommend
     },
     {
+      path: '/singer',
+      name: 'singer',
+      component: () => import('../views/singer.vue')
+    },
+    {
       path: '/disc/:id',
       name: 'disc',
       component: () => import('../views/disc.vue')

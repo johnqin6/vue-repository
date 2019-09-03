@@ -25,7 +25,7 @@
           </li>
         </ul>
       </div>
-      <div class="loading-container" >
+      <div class="loading-container" v-show="isLoading">
         <loading></loading>
       </div>
     </q-scroll>
@@ -44,6 +44,7 @@ export default {
     return {
       recommends: [],
       discList: [],
+      isLoading: false,
       swiperOption: {
         // 循环
         loop: true,
@@ -87,9 +88,11 @@ export default {
       }
     },
     async getDiscData () {
+      this.isLoading = true
       const res = await getDiscList()
       if (res.code === 0) {
         this.discList = res.data.list
+        this.isLoading = false
       }
     },
     ...mapMutations({
@@ -138,6 +141,12 @@ export default {
         }
       }
     }
+  }
+  .loading-container {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
   }
 }
 </style>

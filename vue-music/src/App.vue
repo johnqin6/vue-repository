@@ -11,16 +11,19 @@ export default {
     return {
       tabIndex: 0,
       tabList: [
-        { name: '推荐' },
-        { name: '歌手' },
-        { name: '排行' },
-        { name: '搜索' }
+        { name: '推荐', path: '/recommend' },
+        { name: '歌手', path: '/singer' },
+        { name: '排行', path: '' },
+        { name: '搜索', path: '' }
       ]
     }
   },
   methods: {
     chooseTab (index) {
       this.tabIndex = index
+      this.$router.push({
+        path: this.tabList[index].path
+      })
     }
   }
 }

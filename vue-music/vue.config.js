@@ -14,6 +14,18 @@ module.exports = {
         pathRewrite: {
           '^/api': ''
         }
+      },
+      "/uqq": {
+        target: 'https://u.y.qq.com',
+        headers: {
+          referer: 'https://u.y.qq.com/',
+          host: 'u.y.qq.com'
+        },
+        changeOrigin: true,
+        ws: true,
+        pathRewrite: {
+          '^/uqq': ''
+        }
       }
     }
   },

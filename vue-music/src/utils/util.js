@@ -70,3 +70,57 @@ export function setCharList (start, end) {
   }
   return list
 }
+
+/**
+ * 统计对象数组指定键对应的数组项
+ * @param {*} arr
+ * @param {*} key
+ * return Object  返回统计后的对象
+ */
+export function countWithArrKey (arr, key) {
+  arr = [...arr]
+  let obj = {}
+  arr.forEach(item => {
+    if (!obj[item[key]]) {
+      obj[item[key]] = []
+    }
+    obj[item[key]].push(item)
+  })
+  return obj
+}
+
+/**
+ * 将对象转化为指定键的数组
+ * @param {*} obj 目标对象
+ * @param {*} option 对象数组的键值配置
+ * return Array
+ */
+export function transFromArrWithObj (obj, option) {
+  let arr = []
+  for (let key in obj) {
+    let _obj = {}
+    _obj[option.key1] = key
+    _obj[option.key2] = obj[key]
+    arr.push(_obj)
+  }
+  return arr
+}
+
+/**
+ * 对象数组排序
+ * @param {*} arr
+ * @param {*} key 需要排序的属性
+ * @param {*} type ascd: 正序，desc: 倒序
+ */
+export function arrSort (arr, key, type) {
+  let _type = type || 'ascd'
+  let _arr = [...arr]
+  _arr.sort((a, b) => {
+    if (_type === 'ascd') {
+      return a[key].charCodeAt() - b[key].charCodeAt()
+    } else {
+      return b[key].charCodeAt() > a[key].charCodeAt()
+    }
+  })
+  return _arr
+}

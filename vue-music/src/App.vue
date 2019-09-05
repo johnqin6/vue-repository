@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <q-header title="山海相隔 一眼入梦"></q-header>
-    <tab-list :tabList="tabList" :tabIndex="tabIndex" @change="chooseTab"></tab-list>
+    <tab-list :tabList="tabList" :tabIndex="tabIndex" @change="chooseTab" class="tab"></tab-list>
+    <div style="height: 44px;"></div>
     <router-view/>
   </div>
 </template>
@@ -28,3 +29,11 @@ export default {
   }
 }
 </script>
+<style lang="less" scoped>
+.tab {
+  position: fixed;
+  top: 44px;
+  z-index: 99;
+  height: 44px;
+}
+</style>

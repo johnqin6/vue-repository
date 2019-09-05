@@ -1,6 +1,7 @@
 <template>
   <q-scroll
-  :listen-scroll="listenScroll"
+  @scroll="scroll"
+  :listenScroll="listenScroll"
   :probe-type="probeType"
   :data="data"
   class="list-view"
@@ -34,9 +35,9 @@
         </li>
       </ul>
     </div>
-    <div class="list-fixed" ref="fixed" v-show="fixedTitle">
+    <!-- <div class="list-fixed" ref="fixed" v-show="fixedTitle">
       <div class="fixed-title">{{ fixedTitle }}</div>
-    </div>
+    </div> -->
     <div class="loading-container" v-show="!data.length">
       <loading></loading>
     </div>
@@ -65,7 +66,6 @@ export default {
   },
   computed: {
     shortcutList () {
-      console.log(this.data)
       return this.data.map(group => group.title.substr(0, 4))
     },
     fixedTitle () {
@@ -82,6 +82,7 @@ export default {
       }, 20)
     },
     scrollY (newY) {
+      console.log(newY, this.listHeight)
       const listHeight = this.listHeight
       // 当滚动到顶部，newY > 0
       if (newY > 0) {
@@ -94,10 +95,12 @@ export default {
         let height2 = listHeight[i + 1]
         if (-newY >= height1 && -newY < height2) {
           this.currentIndex = i
-          this.diff = height2 + newY
+          // this.diff = height2 + newY
+          console.log(this.currentIndex)
           return
         }
       }
+      console.log(this.currentIndex, this.listHeight)
       // 当滚动到底部，且-newY大于最后一个元素的上限
       this.currentIndex = listHeight.length - 2
     },
@@ -121,11 +124,11 @@ export default {
       this.$emit('select', item)
     },
     onShortcutTouchStart (e) {
-      console.log(e)
       let anchorIndex = getData(e.target, 'index')
       let firstTouch = e.touches[0]
       this.touch.y1 = firstTouch.pageY
       this.touch.anchorIndex = anchorIndex
+      this.currentIndex = anchorIndex
 
       this.scrollTo(anchorIndex)
     },
@@ -141,6 +144,7 @@ export default {
       this.$refs.listview.refresh()
     },
     scroll (pos) {
+      console.log(pos, 111)
       this.scrollY = pos.y
     },
     calculateHeight () {
@@ -167,7 +171,8 @@ export default {
         index = this.listHeight.length - 2
       }
       this.scrollY = -this.listHeight[index]
-      this.$refs.listview.scrollToElement(this.$refs.listGroup[index], 0)
+      console.log(this.$refs.listview, this.$refs.listGroup[index])
+      this.$refs.listview.scrollToElement(this.$refs.listGroup[index])
     }
   }
 }

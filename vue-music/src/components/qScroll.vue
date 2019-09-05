@@ -49,6 +49,7 @@ export default {
       if (!this.$refs.scroll) {
         return
       }
+
       this.scroll = new BScroll(this.$refs.scroll, {
         probeType: this.probeType,
         click: this.click
@@ -56,6 +57,7 @@ export default {
 
       if (this.listenScroll) {
         this.scroll.on('scroll', pos => {
+          console.log(pos, this, 111)
           this.$emit('scroll', pos)
         })
       }

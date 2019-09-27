@@ -57,7 +57,7 @@ import SlideVerify from '@/components/SlideVerify'
 export default {
   data () {
     return {
-      showSlide: true,
+      showSlide: false,
       text: '向右滑动',
       notifyObj: null,
       ruleForm: {
@@ -75,9 +75,13 @@ export default {
       }
     }
   },
+  mounted () {
+    this.showTip()
+  },
   methods: {
     onSuccess () {
       this.showSlide = false
+      this.login()
     },
     onFail () {
       this.$message.error('验证失败')
@@ -91,6 +95,23 @@ export default {
           this.showSlide = true
         }
       })
+    },
+    login () {
+      this.$store.dispatch('user/_login', this.ruleForm)
+        .then(res => {
+          if (!res.data.success) {
+            this.refresh()
+          } else {
+            this.$router.push(this.$route.query.redirect)
+            if (this.notifyObj) {
+              this.notifyObj.close()
+            }
+            this.notifyObj = null
+          }
+        }).catch(error => {
+          this.refresh()
+          this.$message.error(error)
+        })
     },
     showTip () {
       this.notifyObj = this.$notify({

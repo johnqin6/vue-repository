@@ -49,6 +49,39 @@ export const currencyRoutes = [
         }
       }
     ]
+  },
+  {
+    path: '/personal',
+    name: 'Personal',
+    component: Layout,
+    redirect: '/personal/index',
+    children: [
+      {
+        path: 'index',
+        name: 'Personal-index',
+        component: () => import('@/views/personal'),
+        meta: {
+          title: '个人中心'
+        }
+      }
+    ]
+  },
+  {
+    path: '/driver',
+    name: 'Driver',
+    component: Layout,
+    redirect: '/driver/index',
+    children: [
+      {
+        path: 'index',
+        name: 'Driver-index',
+        component: () => import('@/views/driverPage'),
+        meta: {
+          title: '引导指南',
+          icon: 'el-icon-s-flag'
+        }
+      }
+    ]
   }
 ]
 

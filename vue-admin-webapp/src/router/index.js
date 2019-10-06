@@ -196,6 +196,60 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/components',
+    component: Layout,
+    name: 'Components',
+    redirect: '/components/slide-yz',
+    meta: { icon: 'el-icon-coin', title: '部分组件' },
+    children: [
+      {
+        path: 'slide-yz',
+        name: 'Sldie-yz',
+        component: () => import('@/views/components/slideYz'),
+        meta: { icon: 'el-icon-s-claim', title: '滑动验证' }
+      },
+      {
+        path: 'upload',
+        name: 'Upload',
+        component: () => import('@/views/components/pushImg'),
+        meta: { icon: 'el-icon-upload', title: '上传图片' }
+      },
+      {
+        path: 'carousel',
+        name: 'Carousel',
+        component: () => import('@/views/components/carousel'),
+        meta: { icon: 'el-icon-lunbo iconfont', title: '轮播' }
+      }
+    ]
+  },
+  {
+    path: '/excel',
+    component: Layout,
+    name: 'Excel',
+    redirect: '/excel-operate/excel-out',
+    meta: { icon: 'el-icon-excel iconfont', title: 'Excel' },
+    children: [
+      {
+        path: 'excel-out',
+        name: 'Excel-out',
+        component: () => import('@/views/excel-operate/excelOut'),
+        meta: { title: 'Excel导出' }
+      },
+      {
+        path: 'excel-in',
+        name: 'Excel-in',
+        component: () => import('@/views/excel-operate/excelIn'),
+        meta: { title: 'Excel导入' }
+      },
+      {
+        path: 'mutiheader-out',
+        name: 'Mutiheader-out',
+        component: () => import('@/views/excel-operate/mutiheaderOut'),
+        meta: { title: '多级表头导出' }
+      }
+    ]
+  },
+  {
     path: '/error',
     component: Layout,
     name: 'Error',

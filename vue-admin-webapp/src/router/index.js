@@ -4,6 +4,7 @@ import store from '@/store'
 import { Message } from 'element-ui'
 import getTitle from '@/utils/getTitle'
 import Layout from '@/layout'
+import NavTest from './modules/navTest'
 
 Vue.use(Router)
 
@@ -85,6 +86,90 @@ export const currencyRoutes = [
   }
 ]
 
+// 动态添加routers
+export const asyncRoutes = [
+  {
+    path: '/permission',
+    component: Layout,
+    name: 'Permission',
+    redirect: '/permission/page-user',
+    meta: {
+      title: '权限许可',
+      icon: 'el-icon-lock'
+    },
+    children: [
+      {
+        path: 'page-user',
+        name: 'PageUser',
+        component: () => import('@/views/permission/pageUser'),
+        meta: {
+          title: '用户页面',
+          icon: 'el-icon-user'
+        }
+      },
+      {
+        path: 'page-admin',
+        name: 'PageAdmin',
+        component: () => import('@/views/permission/pageAdmin'),
+        meta: {
+          title: '管理员页面',
+          icon: 'el-icon-user-solid'
+        }
+      },
+      {
+        path: 'roles',
+        name: 'Roles',
+        component: () => import('@/views/permission/roles'),
+        meta: {
+          title: '权限设置',
+          icon: 'el-icon-s-tools'
+        }
+      }
+    ]
+  },
+  {
+    path: '/icons',
+    component: Layout,
+    name: 'Icons',
+    redirect: '/icons/index',
+    children: [
+      {
+        path: 'index',
+        name: 'Icons-index',
+        component: () => import('@/views/icons'),
+        meta: {
+          title: 'Icons图标',
+          icon: 'el-icon-picture-outline'
+        }
+      }
+    ]
+  },
+  {
+    path: '/error',
+    component: Layout,
+    name: 'Error',
+    redirect: '/error/404',
+    children: [
+      {
+        path: '404',
+        name: 'Page404',
+        component: () => import('@/views/errorPage/404'),
+        meta: {
+          title: '404',
+          icon: 'el-icon-s-release'
+        }
+      }
+    ]
+  },
+  NavTest,
+  {
+    path: '*',
+    name: '*404',
+    redirect: '/404',
+    hidden: true
+  }
+]
+
 const creatRouter = () => {
   return new Router({
     routes: currencyRoutes,
@@ -117,12 +202,12 @@ router.beforeEach(async (to, from, next) => {
         next()
       } else {
         try {
-          // const { roles } = await store.dispath('user/_getInfo')
-          // const addRoutes = await store.dispath(
-          //   'permission/getAsyncRoutes',
-          //   roles
-          // )
-          // router.addRoutes(addRoutes)
+          const { roles } = await store.dispath('user/_getInfo')
+          const addRoutes = await store.dispath(
+            'permission/getAsyncRoutes',
+            roles
+          )
+          router.addRoutes(addRoutes)
 
           // 确保addroutes完整的hack方法
           // 设置replace:true，这样导航就不会留下历史记录

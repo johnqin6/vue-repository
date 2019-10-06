@@ -232,19 +232,19 @@ export const asyncRoutes = [
       {
         path: 'excel-out',
         name: 'Excel-out',
-        component: () => import('@/views/excel-operate/excelOut'),
+        component: () => import('@/views/excelOperate/excelOut'),
         meta: { title: 'Excel导出' }
       },
       {
         path: 'excel-in',
         name: 'Excel-in',
-        component: () => import('@/views/excel-operate/excelIn'),
+        component: () => import('@/views/excelOperate/excelIn'),
         meta: { title: 'Excel导入' }
       },
       {
         path: 'mutiheader-out',
         name: 'Mutiheader-out',
-        component: () => import('@/views/excel-operate/mutiheaderOut'),
+        component: () => import('@/views/excelOperate/mutiheaderOut'),
         meta: { title: '多级表头导出' }
       }
     ]

@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import drive from '@/mixins/userDriver'
+import drive from '@/mixins/useDriver'
 
 export default {
   mixins: [driver]

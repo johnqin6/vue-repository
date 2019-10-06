@@ -19,7 +19,7 @@ import MHeader from './components/mHeader'
 import NotificatBar from '../components/NotificatBar'
 import PageMain from './components/PageMain'
 import { mapGetters } from 'vuex'
-import driver from '@/mixins/useDriver'
+import driver from '../mixins/useDriver'
 
 export default {
   name: 'layout',

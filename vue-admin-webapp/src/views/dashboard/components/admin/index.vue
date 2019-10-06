@@ -4,16 +4,18 @@
     <el-row class="infoCrads">
       <el-col :span="6">
         <div class="cardItem">
-          <count-to
-            class="cardItem_p0 color-green1"
-            :startVal="startVal"
-            :endVal="vistors"
-            :duration="2000"
-          ></count-to>
-          <p class="cardItem_p1">Total visitors</p>
-        </div>
-        <div class="cardItem_icon">
-          <i class="el-icon-user color-green1"></i>
+          <div class="cardItem_txt">
+            <count-to
+              class="cardItem_p0 color-green1"
+              :startVal="startVal"
+              :endVal="vistors"
+              :duration="2000"
+            ></count-to>
+            <p class="cardItem_p1">Total Visitors</p>
+          </div>
+          <div class="cardItem_icon">
+            <i class="el-icon-user color-green1"></i>
+          </div>
         </div>
       </el-col>
       <el-col :span="6">
@@ -25,7 +27,7 @@
               :endVal="message"
               :duration="2000"
             ></count-to>
-            <p class="cardItem_p1">message</p>
+            <p class="cardItem_p1">Messages</p>
           </div>
           <div class="cardItem_icon">
             <i class="el-icon-s-comment color-blue"></i>
@@ -41,7 +43,7 @@
               :endVal="order"
               :duration="2000"
             ></count-to>
-            <p class="cardItem_p1">order</p>
+            <p class="cardItem_p1">Total Order Placeed</p>
           </div>
           <div class="cardItem_icon">
             <i class="el-icon-shopping-cart-2 color-red"></i>
@@ -57,7 +59,7 @@
               :endVal="profit"
               :duration="2000"
             ></count-to>
-            <p class="cardItem_p1">profit</p>
+            <p class="cardItem_p1">Total Profit</p>
           </div>
           <div class="cardItem_icon">
             <i class="el-icon-wallet color-green2"></i>
@@ -65,8 +67,10 @@
         </div>
       </el-col>
     </el-row>
+    <!-- end -->
     <!-- lineEcharts -->
     <line-charts class="lCharts" :lineChartData="lineChartData"></line-charts>
+    <!-- end -->
     <!-- table and pie -->
     <el-row class="tableChart">
       <el-col :span="16">
@@ -76,10 +80,13 @@
         <pie-charts class="pieCharts"></pie-charts>
       </el-col>
     </el-row>
-    <!-- barChart -->
+    <!-- end -->
+    <!-- bar chart -->
     <bar-charts class="barCharts" :barData="barData"></bar-charts>
+    <!-- end -->
   </div>
 </template>
+
 <script>
 import CountTo from 'vue-count-to'
 import LineCharts from './components/LineCharts'
@@ -93,7 +100,7 @@ import {
   getBarData
 } from '@/api/dashboard'
 export default {
-   data() {
+  data() {
     return {
       startVal: 0,
       vistors: 0,
@@ -116,17 +123,20 @@ export default {
     BarCharts
   },
   methods: {
-    _getAllData () {
-      this.$http.all([getCardsData(), getLineData(), getTableData(), getBarData()])
-        .then(this.$http.spread((cardData, lineData, tabData, barData) => {
-          this.vistors = cardData.data.vistors
-          this.message = cardData.data.message
-          this.order = cardData.data.order
-          this.profit = cardData.data.profit
-          this.lineChartData = lineData.data
-          ;(this.tableData = tabData.data.tableList),
-          (this.barData = barData.data)
-        }))
+    _getAllData() {
+      this.$http
+        .all([getCardsData(), getLineData(), getTableData(), getBarData()])
+        .then(
+          this.$http.spread((cardData, lineData, tabData, barData) => {
+            this.vistors = cardData.data.vistors
+            this.message = cardData.data.message
+            this.order = cardData.data.order
+            this.profit = cardData.data.profit
+            this.lineChartData = lineData.data
+            ;(this.tableData = tabData.data.tableList),
+              (this.barData = barData.data)
+          })
+        )
     }
   }
 }

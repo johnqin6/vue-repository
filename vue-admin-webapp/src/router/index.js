@@ -128,6 +128,30 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/table',
+    name: 'Table',
+    redirect: '/table/base-table',
+    component: Layout,
+    meta: {
+      title: 'Table',
+      icon: 'el-icon-table iconfont'
+    },
+    children: [
+      {
+        path: 'base-table',
+        name: 'BaseTable',
+        component: () => import('@/views/table/commonTable'),
+        meta: { title: '普通表格' }
+      },
+      {
+        path: 'complex-table',
+        name: 'ComplexTable',
+        component: () => import('@/views/table/complexTable'),
+        meta: { title: '复杂表格' }
+      }
+    ]
+  },
+  {
     path: '/icons',
     component: Layout,
     name: 'Icons',
@@ -160,6 +184,14 @@ export const asyncRoutes = [
         }
       }
     ]
+  },
+  {
+    path: 'https://github.com/johnqin6/vue-repository/tree/master/vue-admin-webapp',
+    name: 'Github',
+    meta: {
+      icon: 'el-icon-link',
+      title: '项目链接'
+    }
   },
   NavTest,
   {

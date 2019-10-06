@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import store from '@/store'
 import { Message } from 'element-ui'
 import getTitle from '@/utils/getTitle'
+import Layout from '@/layout'
 
 Vue.use(Router)
 
@@ -32,6 +33,22 @@ export const currencyRoutes = [
     name: '404',
     component: () => import('../views/errorPage/404.vue'),
     hidden: true
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: Layout,
+    children: [
+      {
+        path: 'dashbord',
+        name: 'Dashbord',
+        component: () => import('@/views/dashboard'),
+        meta: {
+          title: '首页',
+          icon: 'el-icon-s-data'
+        }
+      }
+    ]
   }
 ]
 

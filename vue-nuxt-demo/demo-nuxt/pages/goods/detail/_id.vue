@@ -10,12 +10,15 @@
 import axios from 'axios'
 export default {
   async asyncData ({ params }) {
-    console.log(params, 11)
+    console.log(params)
     const res = await axios.get('/data/goods.json')
     console.log(res)
     return {
       detailData: res.data
     }
+  },
+  mounted() {
+    console.log(this)
   }
 }
 </script>

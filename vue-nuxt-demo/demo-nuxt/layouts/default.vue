@@ -1,5 +1,9 @@
 <template>
   <div>
+    <nuxt-link to="/">首页</nuxt-link>
+    <nuxt-link to="/demo">DEMO页面</nuxt-link>
+    <nuxt-link to="/goods/list">商品页面</nuxt-link>
+    <nuxt-link to="/user">用户页面</nuxt-link>
     <nuxt />
   </div>
 </template>

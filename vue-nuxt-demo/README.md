@@ -12,3 +12,14 @@
   3. 服务端渲染对SEO更友好
 
 [vue服务器渲染官方文档](https://ssr.vuejs.org/zh/)
+
+## vue服务端通用框架- nuxt.js
+
+[官方文档](https://zh.nuxtjs.org/guide)
+
+> 扩展知识点： npx v5.2.0 引入的一条命令(npx), 引入该命令目的是为了提升开发者使用包内提供的命令行工具的体验。    
+- 使用示例
+> npx create-react-app my-app  
+> 相当于 npm install -g create-react-app
+> create-react-app my-app
+

@@ -91,13 +91,13 @@ export default {
       let len = this.date.length
       this.chartData.date = this.date.slice(len - num)
       this.chartData.price = this.price.slice(len - num)
-      this._setOption(this.chartData)
+      this.setOption(this.chartData)
     },
     initEcharts () {
       this.mycharts = echarts.init(this.$refs.mycharts, 'macarons')
       this.setChartData(10)
     },
-    _setOption (chartData) {
+    setOption (chartData) {
       this.mycharts.setOption({
         title: {
           text: '商品价格变动图',

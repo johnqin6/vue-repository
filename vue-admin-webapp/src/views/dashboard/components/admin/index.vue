@@ -113,7 +113,7 @@ export default {
     }
   },
   created () {
-    this._getAllData()
+    this.loadAllData()
   },
   components: {
     CountTo,
@@ -123,7 +123,7 @@ export default {
     BarCharts
   },
   methods: {
-    _getAllData () {
+    loadAllData () {
       this.$http
         .all([getCardsData(), getLineData(), getTableData(), getBarData()])
         .then(

@@ -31,7 +31,7 @@ export default {
     barData: {
       deep: true,
       handler (val) {
-        this._setOption(val.y2017, val.y2018, val.y2019)
+        this.setOption(val.y2017, val.y2018, val.y2019)
       }
     }
   },
@@ -44,14 +44,14 @@ export default {
     initEcharts () {
       this.mycharts = echarts.init(this.$refs.myCharts, 'macarons')
       if (Object.keys(this.barData).length > 0) {
-        this._setOption(
+        this.setOption(
           this.barData.y2017,
           this.barData.y2018,
           this.barData.y2019
         )
       }
     },
-    _setOption (y2017, y2018, y2019) {
+    setOption (y2017, y2018, y2019) {
       this.mycharts.setOption({
         title: {
           text: 'Yearly Expense',

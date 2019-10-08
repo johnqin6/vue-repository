@@ -112,9 +112,9 @@ export default {
   methods: {
     initEcharts () {
       this.mycharts = echarts.init(this.$refs.mycharts, 'macarons')
-      this._setOption()
+      this.setOption()
     },
-    _setOption () {
+    setOption () {
       this.mycharts.setOption({
         backgroundColor: '#404a59',
         title: {

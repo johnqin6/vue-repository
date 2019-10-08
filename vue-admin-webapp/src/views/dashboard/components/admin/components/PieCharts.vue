@@ -31,9 +31,9 @@ export default {
   methods: {
     initEcharts () {
       this.mycharts = echarts.init(this.$refs.myCharts, 'macarons')
-      this._setOtion()
+      this.setOtion()
     },
-    _setOtion () {
+    setOtion () {
       this.mycharts.setOption({
         tooltip: {
           trigger: 'item',

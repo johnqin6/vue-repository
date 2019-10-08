@@ -36,7 +36,7 @@ export default {
     lineChartData: {
       deep: true,
       handler (val) {
-        this._setOption(val.inPrice, val.outPrice)
+        this.setOption(val.inPrice, val.outPrice)
       }
     }
   },
@@ -49,10 +49,10 @@ export default {
     initEcharts () {
       this.mycharts = echarts.init(this.$refs.myCharts, 'macarons')
       if (Object.keys(this.lineChartData).length > 0) {
-        this._setOption(this.lineChartData.inPrice, this.lineChartData.outPrice)
+        this.setOption(this.lineChartData.inPrice, this.lineChartData.outPrice)
       }
     },
-    _setOption (inprice = [], outprice = []) {
+    setOption (inprice = [], outprice = []) {
       this.mycharts.setOption({
         title: {
           text: 'Statistics',

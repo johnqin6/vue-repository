@@ -27,7 +27,7 @@ function forSearchArr (route, roles) {
 }
 
 const actions = {
-  getAsyncRoutes({ commit, rootGetters }, roles) {
+  getAsyncRoutes ({ commit, rootGetters }, roles) {
     return new Promise(resolve => {
       let routes = []
       if (rootGetters.userName === 'admin') {

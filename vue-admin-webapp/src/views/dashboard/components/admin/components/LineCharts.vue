@@ -27,7 +27,7 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
       mycharts: null
     }
@@ -35,24 +35,24 @@ export default {
   watch: {
     lineChartData: {
       deep: true,
-      handler(val) {
+      handler (val) {
         this._setOption(val.inPrice, val.outPrice)
       }
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick().then(() => {
       this.initEcharts()
     })
   },
   methods: {
-    initEcharts() {
+    initEcharts () {
       this.mycharts = echarts.init(this.$refs.myCharts, 'macarons')
       if (Object.keys(this.lineChartData).length > 0) {
         this._setOption(this.lineChartData.inPrice, this.lineChartData.outPrice)
       }
     },
-    _setOption(inprice = [], outprice = []) {
+    _setOption (inprice = [], outprice = []) {
       this.mycharts.setOption({
         title: {
           text: 'Statistics',

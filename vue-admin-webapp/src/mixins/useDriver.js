@@ -8,7 +8,7 @@ export default {
       driver: null
     }
   },
-  mounted() {
+  mounted () {
     this.driver = new Driver({
       opacity: 0.6,
       onReset: () => {

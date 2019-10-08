@@ -66,7 +66,7 @@ export default {
       // 遍历每一行
       for (C = range.s.c; C <= range.e.c; ++C) {
         // walk every column in the range
-        const cell = sheet[XLSX.utils.encode_cell({ c: C, r: R})]
+        const cell = sheet[XLSX.utils.encode_cell({ c: C, r: R })]
         /* find the cell in the first row */
         let hdr = 'UNKNOWN ' + C // <-- replace with your desired default
         if (cell && cell.t) hdr = XLSX.utils.format_cell(cell)

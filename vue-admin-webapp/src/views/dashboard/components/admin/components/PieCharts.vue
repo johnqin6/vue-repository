@@ -18,22 +18,22 @@ export default {
       default: '350px'
     }
   },
-  data() {
+  data () {
     return {
       mycharts: null
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick().then(() => {
       this.initEcharts()
     })
   },
   methods: {
-    initEcharts() {
+    initEcharts () {
       this.mycharts = echarts.init(this.$refs.myCharts, 'macarons')
       this._setOtion()
     },
-    _setOtion() {
+    _setOtion () {
       this.mycharts.setOption({
         tooltip: {
           trigger: 'item',

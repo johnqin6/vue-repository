@@ -32,7 +32,7 @@ export default {
           }
         })
         if (allList[0].path !== '/' && allList[0].path !== '/dashbord') {
-          allList.unshift({ path: '/', meta: { title: '首页' }})
+          allList.unshift({ path: '/', meta: { title: '首页' } })
         }
       },
       immediate: true

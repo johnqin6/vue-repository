@@ -44,7 +44,7 @@
 import SlideVerify from '@/components/SlideVerify'
 
 export default {
-  data() {
+  data () {
     return {
       showSlide: false,
       text: '向右滑动',
@@ -103,15 +103,15 @@ export default {
     SlideVerify
   },
   methods: {
-    onSuccess() {
+    onSuccess () {
       this.showSlide = false
       this.$message.success('验证成功')
       this.refresh()
     },
-    onFail() {
+    onFail () {
       this.$message.error('验证失败')
     },
-    refresh() {
+    refresh () {
       this.$refs.slideDiv.reset()
     }
   }

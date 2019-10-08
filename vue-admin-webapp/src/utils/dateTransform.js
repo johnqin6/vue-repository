@@ -1,4 +1,4 @@
-export function GMTToStr(time) {
+export function GMTToStr (time) {
   let date = new Date(time)
   let str =
     date.getFullYear() +

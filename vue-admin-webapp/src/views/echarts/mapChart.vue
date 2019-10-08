@@ -15,7 +15,7 @@ export default {
   mixins: [resize],
   data () {
     return {
-       mycharts: null,
+      mycharts: null,
       mapData: [
         {
           fromName: '北京',
@@ -104,7 +104,7 @@ export default {
       ]
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick().then(() => {
       this.initEcharts()
     })

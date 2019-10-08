@@ -4,19 +4,19 @@ export default {
       sideBarDom: null
     }
   },
-  mounted() {
+  mounted () {
     this.windowInitResize()
     this.sideBarResize()
   },
-  activated() {
+  activated () {
     this.windowInitResize()
     this.sideBarResize()
   },
-  deactivated() {
+  deactivated () {
     this.removeEindowInitResize()
     this.removeSideBarResize()
   },
-  destroyed() {
+  destroyed () {
     this.removeWindowInitResize()
     this.removeSideBarResize()
   },

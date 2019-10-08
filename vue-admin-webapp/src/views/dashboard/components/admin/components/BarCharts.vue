@@ -35,7 +35,7 @@ export default {
       }
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick().then(() => {
       this.initEcharts()
     })

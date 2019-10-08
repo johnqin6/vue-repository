@@ -163,7 +163,7 @@
 import { getPageTab2 } from '@/api/table'
 
 export default {
-   data() {
+  data () {
     return {
       tableData: [],
       allList: [],
@@ -204,11 +204,11 @@ export default {
       }
     }
   },
-  created() {
+  created () {
     this._getPageTab2()
   },
   filters: {
-    statusText(val) {
+    statusText (val) {
       if (val === undefined) return
       if (val === 0) {
         return '已完成'
@@ -220,7 +220,7 @@ export default {
         return '已取消'
       }
     },
-    tagClass(val) {
+    tagClass (val) {
       if (val === undefined) return
       if (val === 0) {
         return 'success'
@@ -234,15 +234,15 @@ export default {
     }
   },
   methods: {
-    handleSize(val) {
+    handleSize (val) {
       this.pageSize = val
       this.getPageData()
     },
-    handlePage(val) {
+    handlePage (val) {
       this.currentPage = val
       this.getPageData()
     },
-    _getPageTab2() {
+    _getPageTab2 () {
       getPageTab2()
         .then(res => {
           this.allList = res.data.tableList
@@ -254,7 +254,7 @@ export default {
           this.$message.error(error.message)
         })
     },
-    getPageData() {
+    getPageData () {
       let start = (this.currentPage - 1) * this.pageSize
       let end = start + this.pageSize
       this.tableData = this.schArr.slice(start, end)
@@ -314,8 +314,8 @@ export default {
         type: 'success'
       })
     },
-     // 取消
-    toDelete(row) {
+    // 取消
+    toDelete (row) {
       row.status = 3
       this.$notify({
         title: '成功',
@@ -324,7 +324,7 @@ export default {
       })
     },
     // 编辑
-    editTable(index, row) {
+    editTable (index, row) {
       this.formData = Object.assign({}, row)
       this.editType = 'update'
       this.diaIsShow = true
@@ -333,7 +333,7 @@ export default {
       })
       this.rowIndex = index
     },
-    changeTab(form, type) {
+    changeTab (form, type) {
       this.$refs[form].validate(valid => {
         if (valid) {
           if (type === 'update') {
@@ -360,7 +360,7 @@ export default {
           }
           this.diaIsShow = false
         } else {
-          return
+
         }
       })
     }

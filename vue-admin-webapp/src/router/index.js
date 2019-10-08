@@ -310,7 +310,7 @@ router.beforeEach(async (to, from, next) => {
     next()
   } else {
     if (store.getters.token) {
-      const hasRoles = store.geeters.roles.length > 0
+      const hasRoles = store.getters.roles.length > 0
       if (hasRoles) {
         next()
       } else {

@@ -100,7 +100,7 @@ import {
   getBarData
 } from '@/api/dashboard'
 export default {
-  data() {
+  data () {
     return {
       startVal: 0,
       vistors: 0,
@@ -112,7 +112,7 @@ export default {
       barData: {}
     }
   },
-  created() {
+  created () {
     this._getAllData()
   },
   components: {
@@ -123,7 +123,7 @@ export default {
     BarCharts
   },
   methods: {
-    _getAllData() {
+    _getAllData () {
       this.$http
         .all([getCardsData(), getLineData(), getTableData(), getBarData()])
         .then(
@@ -133,8 +133,8 @@ export default {
             this.order = cardData.data.order
             this.profit = cardData.data.profit
             this.lineChartData = lineData.data
-            ;(this.tableData = tabData.data.tableList),
-              (this.barData = barData.data)
+            this.tableData = tabData.data.tableList
+            this.barData = barData.data
           })
         )
     }

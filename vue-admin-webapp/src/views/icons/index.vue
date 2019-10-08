@@ -27,8 +27,8 @@
             <i class="el-icon-s-promotion"></i>阿里iconfonts
           </span>
           <p class="pTitle">
-             这里是通过使用阿里iconfont在项目中生成字体图标，直接通过设置类名为
-            <code>el-icon-iconName iconfont</code> 
+            这里是通过使用阿里iconfont在项目中生成字体图标，直接通过设置类名为
+            <code>el-icon-iconName iconfont</code>
             来使用即可，例如：
             <code>{{ expText2 }}</code
             >（如果需要添加更多图标就去iconfont官方添加图标，资源很多）
@@ -49,7 +49,7 @@ import { elIcons } from './element-icons'
 import { alIcons } from './iconfont'
 
 export default {
-  data() {
+  data () {
     return {
       elIcons,
       alIcons,

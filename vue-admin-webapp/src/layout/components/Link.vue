@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import {siAbsolutePath } from '@/utils/validate'
+import { isAbsolutePath } from '@/utils/validate'
 
 export default {
   props: {

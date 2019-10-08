@@ -30,7 +30,7 @@ export default {
   methods: {
     // mock data
     mockData () {
-      let base = +newDate('2018/1/1')
+      let base = +new Date('2018/1/1')
       let oneDay = 12 * 3600 * 1000
       let date = []
       let data = []
@@ -39,8 +39,8 @@ export default {
         let item = new Date(base)
         base += oneDay
         date.push(
-          item.getFullYear() + '/' 
-          + (item.getMonth() + 1) + '/' + item.getDate()
+          item.getFullYear() + '/' +
+          (item.getMonth() + 1) + '/' + item.getDate()
         )
         data.push(Math.floor(Math.random() * (1000 - 500 + 1) + 500))
       }

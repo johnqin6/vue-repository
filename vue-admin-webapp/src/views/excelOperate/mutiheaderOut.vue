@@ -38,7 +38,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       tabList: [
         {
@@ -120,7 +120,7 @@ export default {
     }
   },
   methods: {
-    excelDow() {
+    excelDow () {
       import('@/vendor/Export2Excel.js').then(moudle => {
         const multiHeader = [
           ['序号', '配送信息', '', '', '', '', '日期'],
@@ -150,7 +150,7 @@ export default {
         })
       })
     },
-    formatJson(filterVal, jsonData) {
+    formatJson (filterVal, jsonData) {
       return jsonData.map(v => filterVal.map(j => v[j]))
     }
   }

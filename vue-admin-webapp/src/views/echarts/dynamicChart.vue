@@ -56,7 +56,7 @@ export default {
       }
     }
   },
-  mounted() {
+  mounted () {
     this.mockData()
     this.$nextTick().then(() => {
       this.initEcharts()
@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     // mock data
-    mockData() {
+    mockData () {
       let base = +new Date('2019/1/1')
       let oneDay = 24 * 3600 * 1000
       let date = []

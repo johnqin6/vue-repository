@@ -13,17 +13,17 @@
         <el-table-column prop="description" label="说明"></el-table-column>
         <el-table-column label="操作">
           <template>
-           <el-button
-             @click="editRoles(scope.$index, scope.row)"
-             type="primary">
-             编辑
-           </el-button>
-           <el-button
-             @click="deleteRoles(scope.$index)"
-             :disabled="isAdmin(scope.row)"
-             type="warning">
-             编辑
-           </el-button>
+            <el-button
+              @click="editRoles(scope.$index, scope.row)"
+              type="primary">
+              编辑
+            </el-button>
+            <el-button
+              @click="deleteRoles(scope.$index)"
+              :disabled="isAdmin(scope.row)"
+              type="warning">
+              编辑
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -73,8 +73,8 @@
   </div>
 </template>
 <script>
-import { getAllRolse } from '@/api/roles'
-import { asyncRoutes, currentcyRoutes } from '@/router'
+import { getAllRoles } from '@/api/roles'
+import { asyncRoutes, currencyRoutes } from '@/router'
 
 export default {
   data () {
@@ -100,7 +100,7 @@ export default {
         ]
       },
       editIndex: 0,
-      allRoute: [...currentcyRoutes, ...asyncRoutes],
+      allRoute: [...currencyRoutes, ...asyncRoutes],
       treeData: [],
       defaultProps: {
         label: 'label',
@@ -114,7 +114,7 @@ export default {
   },
   methods: {
     _getAllRolse () {
-      getAllRolse()
+      getAllRoles()
         .then(res => {
           this.rolesTab = res.data.allRoles
         })
@@ -153,10 +153,10 @@ export default {
         this.$refs.tree.setCheckedKeys([])
       })
     },
-    editRoles(index, row) {
+    editRoles (index, row) {
       this.diaIsShow = true
       this.editIndex = index
-      this.editType = 'update',
+      this.editType = 'update'
       this.formData = Object.assign({}, this.formData, {
         key: row.key,
         description: row.description

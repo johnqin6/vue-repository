@@ -112,7 +112,7 @@ export default {
         return '已取消'
       }
     },
-    tagClass(val) {
+    tagClass (val) {
       if (val === undefined) return
       if (val === 0) {
         return 'success'

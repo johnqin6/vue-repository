@@ -4,8 +4,8 @@
   </div>
 </template>
 <script>
-import adminComponent from './admin'
-import userComponent from './user'
+import adminComponent from './components/admin'
+import userComponent from './components/user'
 import { mapGetters } from 'vuex'
 
 export default {
